@@ -5,7 +5,7 @@ package pijin;
 service Auth {
   rpc createAuthorization(createAuthorizationRequest) returns(res) {};
   rpc getAllAuthorizations(getAllAuthorizationsRequest) returns(res) {};
-  rpc getAuthorizationByID(getByIDRequest) returns(res) {};
+  rpc getAuthorizationByID(getAuthorizationByIDRequest) returns(res) {};
   rpc updateAuthorization(updateAuthorizationRequest) returns(res) {};
   rpc deleteAuthorizationByID(onlyIDRequest) returns(res) {};
 
@@ -36,9 +36,17 @@ message getByUserIDRequest {
 message createAuthorizationRequest {
   required string userID = 10;
   required string password = 20;
+  optional string facebookID = 30;
 }
 
 message getAllAuthorizationsRequest {
+}
+
+message getAuthorizationByIDRequest {
+  optional string id = 10;
+  optional bool deleted = 20;
+  optional string userID = 30;
+  optional string facebookID = 40;
 }
 
 message updateAuthorizationRequest {
